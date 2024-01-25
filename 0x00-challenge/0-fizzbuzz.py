@@ -1,39 +1,39 @@
-#include <string.h>
-#include <stdlib.h>
-#include "lists.h"
+#!/usr/bin/python3
+""" FizzBuzz
+"""
+import sys
 
-/**
- * add_dnodeint_end - Add a node at the end of a list
- *
- * @head: The address of the pointer to the first element of the list
- * @n: The number to store in the new element
- *
- * Return: A pointer to the new element
- */
-dlistint_t *add_dnodeint_end(dlistint_t **head, const int n)
-{
-	dlistint_t *new;
-	dlistint_t *l;
 
-	new = malloc(sizeof(dlistint_t));
-	if (new == NULL)
-	{
-		return (NULL);
-	}
-	new->n = n;
-	new->next = NULL;
-	if (*head == NULL)
-	{
-		*head = new;
-		new->prev = NULL;
-		return (new);
-	}
-	l = *head;
-	while (l->next != NULL)
-	{
-		l = l->next;
-	}
-	l->next = new;
-	new->prev = l;
-	return (new);
-}
+def fizzbuzz(n):
+    """
+    FizzBuzz function prints numbers from 1 to n separated by a space.
+
+    - For multiples of three print "Fizz" instead of the number and for
+      multiples of five print "Buzz".
+    - For numbers which are multiples of both three and five print "FizzBuzz".
+    """
+    if n < 1:
+        return
+
+    tmp_result = []
+    for i in range(1, n + 1):
+        if (i % 3) == 0 and (i % 5) == 0:
+            tmp_result.append("FizzBuzz")
+        elif (i % 3) == 0:
+            tmp_result.append("Fizz")
+        elif (i % 5) == 0:
+            tmp_result.append("Buzz")
+        else:
+            tmp_result.append(str(i))
+    print(" ".join(tmp_result))
+
+
+if __name__ == '__main__':
+    if len(sys.argv) <= 1:
+        print("Missing number")
+        print("Usage: ./0-fizzbuzz.py <number>")
+        print("Example: ./0-fizzbuzz.py 89")
+        sys.exit(1)
+
+    number = int(sys.argv[1])
+    fizzbuzz(number)
